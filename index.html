@@ -1,0 +1,33 @@
+<!-- ejecutar en consola: -->
+<!-- json-server --watch db.json --port 3000 -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ToDo ListApp</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="todo-app">
+        <section class="image-wrapper">
+      <img class="logo" src="img/logo.png" alt="Logotipo" width="300px">
+      <img class="empty-image" src="./img/empty.png" width="300px" alt="empty" />
+        </section>
+      <form class="input-area">
+        <input type="text" id="task-input" placeholder="Añade una nueva tarea" />
+        <button type="submit" id="add-task-btn">
+          <i class="fa-solid fa-plus"></i>
+        </button>
+      </form>
+      <div class="todos-container">
+        <ul id="task-list"></ul>
+      </div>
+    </div>
+  </div>
+  <script type="module" src="./js/main.js"></script>
+</body>
+</html>
