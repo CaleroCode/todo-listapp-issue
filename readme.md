@@ -69,3 +69,4 @@ También se diseñó una versión visual final de la app en Figma, con estilos y
 
 El flujo de datos representa cómo se mueve la información entre usuario, interfaz (DOM), servidor (json-server) y localStorage:
 
+![Data Flow](./img/dataflow.png)
