@@ -41,17 +41,16 @@ Antes de empezar a maquetar, se realizó un **wireframe mínimo** para planifica
 ### 📐 Vistas en baja fidelidad:
 
 #### 📄 Página principal (index.html)
-![Wireframe index](img/wireframe-index.png)
+![Wireframe index](img/indexhtml.png)
 
 #### 🧩 Tareas añadidas
-![Wireframe tareas añadidas](img/wireframe-tareas-anadidas.png)
+![Wireframe tareas añadidas](img/wireframe-añadir.png)
 
 #### 🖊️ Editar tarea
 ![Wireframe editar](img/wireframe-editar.png)
 
 #### 🗑️ Borrar tarea
 ![Wireframe borrar](img/wireframe-borrar.png)
-
 ---
 
 ## 🎨 Prototipo visual (Figma)
@@ -59,10 +58,10 @@ Antes de empezar a maquetar, se realizó un **wireframe mínimo** para planifica
 También se diseñó una versión visual final de la app en Figma, con estilos y estructura definidos.  
 
 #### 🎨 Página principal
-![Prototipo index](img/prototipo-index.png)
+![Prototipo index](img/prototipo-visual.png)
 
 #### ✅ Tareas añadidas
-![Prototipo tareas añadidas](img/prototipo-tareas-anadidas.png)
+![Prototipo tareas añadidas](img/tareas.png)
 
 ---
 
