@@ -36,14 +36,13 @@ export function renderTask(task, taskList, taskInput, toggleEmptyState) {
     await updateTask(task.id, { completed: isChecked });
   });
 
-  editBtn.addEventListener("click", async () => {
-    if (!checkbox.checked) {
-      taskInput.value = li.querySelector("span").textContent;
-      li.remove();
-      await deleteTask(task.id);
-      toggleEmptyState();
-    }
-  });
+editBtn.addEventListener("click", () => {
+  if (!checkbox.checked) {
+    taskInput.value = li.querySelector("span").textContent;
+    taskInput.dataset.editingId = task.id;
+    taskInput.focus();
+  }
+});
 
 li.querySelector(".delete-btn").addEventListener("click", async () => {
   li.classList.add("falling");
