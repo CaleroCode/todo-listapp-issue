@@ -1,3 +1,9 @@
+// Contiene funciones que manipulan el DOM (interfaz visual).
+// Se encarga de renderizar las tareas, actualizar la interfaz cuando hay cambios y manejar los eventos del usuario.
+// Separa la lógica de la interfaz del resto de la aplicación.
+
+
+
 import { updateTask, deleteTask } from './api.js';
 
 export function renderTask(task, taskList, taskInput, toggleEmptyState) {

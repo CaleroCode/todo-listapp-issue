@@ -1,3 +1,8 @@
+// Archivo principal de la aplicación. Aquí se inicializa todo.
+// Coordina la carga inicial de tareas, vincula eventos del DOM y utiliza las funciones de api.js y dom.js.
+// Actúa como punto de entrada para el funcionamiento de la ToDo List.
+
+
 import { getTasks, createTask } from './api.js';
 import { renderTask } from './dom.js';
 

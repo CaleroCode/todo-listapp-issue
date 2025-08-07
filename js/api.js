@@ -1,3 +1,9 @@
+// Contiene todas las funciones relacionadas con la comunicación con la API (json-server).
+// Realiza operaciones CRUD: obtener, crear, actualizar y eliminar tareas.
+// Centraliza todas las llamadas a la API para mantener el código limpio y reutilizable.
+
+
+
 const API_URL = "http://localhost:3000/tasks";
 
 export async function getTasks() {
