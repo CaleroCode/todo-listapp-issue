@@ -1,0 +1,56 @@
+.intro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  line-height: 0; /* por si acaso hubiera espacio inline */
+}
+
+/* el enlace con el primer SVG */
+.intro a {
+  display: block;
+  position: relative;
+  z-index: 2; /* por encima del de abajo */
+}
+
+.intro a svg { 
+  display: block;
+}
+
+/* el segundo SVG, muy cerca del primero */
+.intro a + svg {
+  margin-top: -340px;    /* ajusta a tu gusto (-10, -20, etc.) */
+  position: relative;
+  z-index: 1;
+  pointer-events: none; /* no bloquea el clic del <a> */
+}
+
+/* elimina esto si lo tenías */
+.intro svg + svg {
+  transform: none; /* IMPORTANTE: quita el translateY(-300px) */
+}
+
+svg path {
+    fill: transparent;
+    stroke: #499dde;
+    stroke-width: 0.1;
+    stroke-dasharray: 50;
+    stroke-dashoffset: 60;
+    animation: textAnimation 4s ease-in-out 1 forwards;
+
+}
+@keyframes textAnimation {
+    0% {
+        stroke-dashoffset: 50;
+    }
+    80%{
+        fill: transparent;
+    }
+     90%{
+        fill: #7ac0f6;
+    }
+    100% {
+        fill: #58a3de;
+        stroke-dashoffset: 0;
+    }
+}
