@@ -15,7 +15,7 @@ body {
     align-items: center;
     min-height: 100px;
     background-color: #96d1f5;
-     background-image: url("https://www.transparenttextures.com/patterns/always-grey.png");
+    background-image: url("https://www.transparenttextures.com/patterns/always-grey.png");
 }
 .container {
     display: flex;
@@ -62,9 +62,9 @@ body {
     box-shadow: 0 0 100px #344c5b;
     border: 3px solid rgba(255, 255, 255, 0.18);
     backdrop-filter: blur(1.9px);
-        h1 {
-            font-size: 2rem;
-        }
+}
+.todo-app h1 {
+    font-size: 2rem;
 }
 .input-area {
     display: flex;
@@ -79,6 +79,7 @@ body {
     outline: none;
     border-radius: 20px 0;
     background: #3eadf2;
+    color: white;
 }
 .input-area input::placeholder{
     color: white;
@@ -113,8 +114,8 @@ body {
 #task-list li {
     text-transform: uppercase;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    flex-direction: column;
+    align-items: stretch;
     background: #3eadf2;
     margin-bottom: 10px;
     padding: 8px 10px;
@@ -126,6 +127,12 @@ body {
 }
 #task-list li:hover {
     box-shadow: 0 0 10px #344c5b;
+}
+.task-main {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
 }
 #task-list li .checkbox {
     min-width: 20px;
@@ -149,19 +156,21 @@ body {
     align-items: center;
     font-size: 1rem;
 }
-#task-list li span {
+#task-list li span,
+#task-list li .task-text {
     flex: 1;
     margin-left: 10px;
     word-wrap: break-word;
 }
-#task-list li.completed span {
+#task-list li.completed span,
+#task-list li.completed .task-text {
     text-decoration: 2px line-through black;
     color: black;
 }
 .task-buttons {
     display: flex;
     gap: 10px;
-    margin-right: auto;
+    margin-left: auto;
 }
 .task-buttons button {
     background: rgba(255, 255, 255, 0.3);
@@ -198,4 +207,87 @@ body {
 }
 .falling {
   animation: fallAndFade 0.4s ease forwards;
+}
+.notes {
+  display: none;
+  margin-top: .5rem;
+  width: 100%;
+}
+.notes.open {
+  display: block;
+}
+.note-input {
+  width: 100%;
+  min-height: 72px;
+  padding: 10px 17px;
+  border: none;
+  outline: none;
+  border-radius: 20px 0;
+  background: #3eadf2;
+  color: white;
+  font-family: inherit;
+  font-size: 1rem;
+  resize: vertical;
+  text-transform: none;
+}
+.note-input::placeholder {
+  color: white;
+}
+.priority-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: 10px;
+  background: #3eadf2;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 20px 0;
+  color: white;
+  font-size: 0.95rem;
+  user-select: none;
+  cursor: pointer;
+}
+.priority-toggle input {
+  width: 14px;
+  height: 14px;
+  appearance: none;
+  border: 2px solid #d94a4a;
+  border-radius: 2px;
+  background: transparent;
+  cursor: pointer;
+  position: relative;
+  margin: 0;
+  padding: 0;
+}
+.priority-toggle input:checked {
+  background: #d94a4a;
+}
+.priority-toggle input:checked::before {
+  content: "\2713";
+  color: white;
+  font-size: 0.8rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -55%);
+}
+#task-list li.completed.high .task-text {
+  color: #1a1a1a;
+  text-decoration-color: #1a1a1a;
+}
+#task-list li.high {
+  background: #d94a4a;
+  box-shadow: 0 0 10px rgba(217, 74, 74, 0.6);
+}
+#task-list li.high:hover {
+  box-shadow: 0 0 14px rgba(217, 74, 74, 0.9);
+}
+.priority-badge {
+  font-size: 0.7rem; /* mucho más pequeño */
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.priority-badge i {
+  font-size: 0.8rem; /* icono más pequeño también */
 }

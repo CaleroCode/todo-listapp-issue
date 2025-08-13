@@ -1,52 +1,71 @@
-// Archivo principal de la aplicación. Aquí se inicializa todo.
-// Coordina la carga inicial de tareas, vincula eventos del DOM y utiliza las funciones de api.js y dom.js.
-// Actúa como punto de entrada para el funcionamiento de la ToDo List.
+// main.js
+// Archivo principal de la aplicación. Inicializa, carga tareas y coordina eventos de UI.
+// Funciona con json-server y el módulo dom.js que ya gestiona el textarea de notas.
 
-import { getTasks, createTask, updateTask } from './api.js'; // Añadido updateTask
+import { getTasks, createTask, updateTask } from './api.js';
 import { renderTask } from './dom.js';
 
-const taskInput = document.getElementById("task-input");
-const addTaskBtn = document.getElementById("add-task-btn");
-const taskList = document.getElementById("task-list");
-const emptyImage = document.querySelector(".empty-image");
+const taskInput   = document.getElementById("task-input");
+const addTaskBtn  = document.getElementById("add-task-btn");
+const taskList    = document.getElementById("task-list");
+const emptyImage  = document.querySelector(".empty-image");
+const priorityToggle = document.getElementById("priority-toggle");
 
 const toggleEmptyState = () => {
+  if (!emptyImage) return;
   emptyImage.style.display = taskList.children.length === 0 ? "block" : "none";
 };
 
 const loadTasks = async () => {
-  const tasks = await getTasks();
-  taskList.innerHTML = "";
-  tasks.forEach(task =>
-    renderTask(task, taskList, taskInput, toggleEmptyState)
-  );
+  try {
+    const tasks = await getTasks();
+    taskList.innerHTML = "";
+    tasks.forEach(task => renderTask(task, taskList, taskInput, toggleEmptyState));
+    toggleEmptyState();
+  } catch (err) {
+    console.error("Error cargando tareas:", err);
+  }
 };
 
-const addTask = async () => {
+const addOrUpdateTask = async () => {
   const text = taskInput.value.trim();
   if (!text) return;
 
   const editingId = taskInput.dataset.editingId;
+  addTaskBtn.disabled = true;
 
-  if (editingId) {
-    // Si estamos editando una tarea existente
-    await updateTask(editingId, { text });
-    taskInput.removeAttribute("data-editing-id");
-  } else {
-    // Si estamos creando una nueva tarea
-    const newTask = await createTask({ text, completed: false });
-    if (newTask) {
-      renderTask(newTask, taskList, taskInput, toggleEmptyState);
+  try {
+    if (editingId) {
+      await updateTask(editingId, { text });
+      taskInput.removeAttribute("data-editing-id");
+    } else {
+      const priority = priorityToggle && priorityToggle.checked ? 'high' : 'normal';
+      const newTask = await createTask({ text, completed: false, note: "", priority });
+      if (newTask) {
+        renderTask(newTask, taskList, taskInput, toggleEmptyState);
+      }
     }
+    taskInput.value = "";
+    if (priorityToggle) priorityToggle.checked = false;
+    await loadTasks();
+    taskInput.focus();
+  } catch (err) {
+    console.error("Error al crear/actualizar la tarea:", err);
+  } finally {
+    addTaskBtn.disabled = false;
   }
-
-  taskInput.value = "";
-  loadTasks(); // Recarga toda la lista actualizada
 };
 
 addTaskBtn.addEventListener("click", (e) => {
   e.preventDefault();
-  addTask();
+  addOrUpdateTask();
+});
+
+taskInput.addEventListener("keydown", (e) => {
+  if (e.key === "Enter") {
+    e.preventDefault();
+    addOrUpdateTask();
+  }
 });
 
 loadTasks();
