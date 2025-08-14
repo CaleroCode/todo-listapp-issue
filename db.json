@@ -1,18 +1,11 @@
 {
   "tasks": [
     {
-      "id": "1d7d",
-      "text": "Probando",
+      "id": "5dd8",
+      "text": "probano",
       "completed": false,
-      "note": "Esto es una prueba",
+      "note": "",
       "priority": "normal"
-    },
-    {
-      "id": "61f7",
-      "text": "probando",
-      "completed": false,
-      "note": "ESto es una prueba\n",
-      "priority": "high"
     }
   ]
 }
